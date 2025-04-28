@@ -1,3 +1,29 @@
+1. Open PowerShell as Administrator
+(Search "PowerShell" → Right-click → "Run as administrator")
+
+2. Run this command to enable WSL:
+
+wsl --install
+✅ This will:
+
+Enable WSL feature
+
+Install Ubuntu (default Linux)
+
+(If --install doesn't work, your Windows needs a manual 2-step setup — I'll explain if needed.)
+
+3. Restart Your PC
+After installation, Restart your computer.
+
+4. Check if WSL is working
+After restart, open PowerShell and run:
+
+wsl --list --verbose
+✅ You should see something like:
+
+NAME            STATE           VERSION
+Ubuntu          Running         2
+---------------------------------------------------------------------
 Step-by-Step Guide
 Step 1: Install Kubernetes Components
 Run these on all nodes (master and workers):
@@ -47,9 +73,6 @@ Add it to PATH manually.
 4. Start Minikube
 Open PowerShell or CMD and run:
 
-bash
-Copy
-Edit
 minikube start --driver=docker
 ✅ This sets up:
 
@@ -60,15 +83,9 @@ minikube start --driver=docker
 5. Verify Cluster
 Check Minikube status:
 
-bash
-Copy
-Edit
 minikube status
 Check node:
 
-bash
-Copy
-Edit
 kubectl get nodes
 ✅ Output should show minikube node with status Ready and role control-plane.
 
