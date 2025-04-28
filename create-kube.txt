@@ -1,0 +1,29 @@
+Step-by-Step Guide
+Step 1: Install Kubernetes Components
+Run these on all nodes (master and workers):
+
+bash
+sudo apt update && sudo apt install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+Step 2: Initialize Kubernetes (Master Node Only)
+Run only on the master node:
+
+bash
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+After success, note the kubeadm join command (for adding workers).
+
+Step 3: Set Up kubectl (Master Node Only)
+Run only on the master node:
+
+bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+Where to Run?
+Node Type	Commands to Run
+Master Node	Step 1 + Step 2 + Step 3
+Worker Node	Step 1 + kubeadm join (from Step 2)
