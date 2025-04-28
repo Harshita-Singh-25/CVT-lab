@@ -27,3 +27,50 @@ Where to Run?
 Node Type	Commands to Run
 Master Node	Step 1 + Step 2 + Step 3
 Worker Node	Step 1 + kubeadm join (from Step 2)
+
+--------------------------------------------------------------------------------------
+1. Install Docker Desktop (Important)
+Download from docker.com
+
+Install it → Open Docker → Enable WSL2 if asked → Keep Docker running.
+
+2. Install Minikube
+Download minikube-installer.exe from Minikube Releases.
+
+Install it → Minikube will get added to your PATH.
+
+3. Install kubectl
+Download kubectl.exe from Kubernetes Releases.
+
+Add it to PATH manually.
+
+4. Start Minikube
+Open PowerShell or CMD and run:
+
+bash
+Copy
+Edit
+minikube start --driver=docker
+✅ This sets up:
+
+1 Master Node
+
+1 Worker Node (both inside Minikube automatically)
+
+5. Verify Cluster
+Check Minikube status:
+
+bash
+Copy
+Edit
+minikube status
+Check node:
+
+bash
+Copy
+Edit
+kubectl get nodes
+✅ Output should show minikube node with status Ready and role control-plane.
+
+🏁 Done!
+This is your basic Kubernetes master+worker node setup using Minikube on Windows! 🎯
