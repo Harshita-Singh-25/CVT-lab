@@ -24,6 +24,16 @@ wsl --list --verbose
 NAME            STATE           VERSION
 Ubuntu          Running         2
 ---------------------------------------------------------------------
+
+1. Install Minikube (One-Time Setup)
+Windows:
+powershell
+# Install Chocolatey (if you don't have it)
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+# Install Minikube
+choco install minikube kubernetes-cli
+-------------------------------------------------------------------
 Step-by-Step Guide
 Step 1: Install Kubernetes Components
 Run these on all nodes (master and workers):
