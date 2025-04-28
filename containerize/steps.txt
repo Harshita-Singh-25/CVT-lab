@@ -1,0 +1,31 @@
+1. Build the Docker Image
+docker build -t my-flask-app .
+2. Run the Container
+docker run -d -p 5000:5000 --name flask-app my-flask-app
+3. Check Logs
+docker logs flask-app
+(Should show Running on http://0.0.0.0:5000).
+
+4. Access Flask App
+Open http://localhost:5000 in a browser
+
+
+-------------------------------------------
+FROM python:3.9-alpine
+Starts with a minimal Python 3.9 environment on Alpine Linux (~60MB vs ~900MB for regular Python image)
+
+WORKDIR /app
+Creates and sets /app as the current directory (like mkdir /app && cd /app)
+
+COPY . .
+First . = host machine's current directory
+Second . = container's /app directory (due to WORKDIR)
+
+EXPOSE 5000
+Documentation only - actual port mapping happens with -p 5000:5000 in docker run
+CMD ["python", "app.py"]
+
+The container will run this when started
+Must be JSON array format (recommended)
+
+Can be overridden at runtime with docker run <image> <new-command>
